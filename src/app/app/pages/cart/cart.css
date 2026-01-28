@@ -1,0 +1,25 @@
+.h{ margin:22px 0; }
+.empty{ color:var(--muted); padding:18px 0; }
+
+.list{ border-top:1px solid var(--border); }
+.row{
+  display:grid;
+  grid-template-columns: 70px 1fr 130px 120px 40px;
+  align-items:center;
+  gap:12px;
+  padding:14px 0;
+  border-bottom:1px solid var(--border);
+}
+.thumb{ width:70px; height:90px; object-fit:cover; border-radius:6px; background:#f2f2f2; }
+.name{ font-weight:700; }
+.price{ color:var(--muted); font-size:13px; margin-top:6px; }
+.qty{ display:flex; align-items:center; justify-content:center; gap:10px; }
+.qty button{
+  width:28px; height:28px; border:1px solid var(--border); background:#fff; cursor:pointer;
+}
+.sum{ font-weight:700; text-align:right; }
+.rm{ border:none; background:transparent; font-size:22px; cursor:pointer; color:#888; }
+.total{ text-align:right; padding:16px 0; font-size:16px; }
+@media (max-width: 860px){
+  .row{ grid-template-columns: 70px 1fr 110px 1fr 40px; }
+}

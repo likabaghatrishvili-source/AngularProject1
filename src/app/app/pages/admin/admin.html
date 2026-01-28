@@ -1,1 +1,44 @@
-<p>admin works!</p>
+<div class="container">
+  <h2 class="h">Admin</h2>
+
+  <div class="admin">
+    <div class="formbox">
+      <div class="t">პროდუქტის დამატება / რედაქტირება</div>
+
+      <form [formGroup]="form" (ngSubmit)="save()">
+        <label>Title</label>
+        <input formControlName="title">
+
+        <label>Price</label>
+        <input type="number" formControlName="price">
+
+        <label>Image (url ან assets path)</label>
+        <input formControlName="image">
+
+        <label>Category</label>
+        <input formControlName="category">
+
+        <label>Description</label>
+        <textarea rows="5" formControlName="description"></textarea>
+
+        <button class="btn" type="submit">{{ editingId ? 'Update' : 'Create' }}</button>
+        <button class="btn2" type="button" (click)="reset()">Clear</button>
+      </form>
+    </div>
+
+    <div class="list">
+      <div class="t">პროდუქტები</div>
+
+      <div class="row" *ngFor="let p of (products$ | async) ?? []">
+        <img [src]="p.image" (error)="($event.target as HTMLImageElement).src='assets/placeholder.jpg'">
+        <div class="meta">
+          <div class="name">{{ p.title }}</div>
+          <div class="muted">{{ p.price | gelPrice }}</div>
+        </div>
+
+        <button class="mini" (click)="edit(p)">Edit</button>
+        <button class="mini danger" (click)="remove(p.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

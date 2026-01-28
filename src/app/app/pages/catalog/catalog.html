@@ -1,1 +1,31 @@
-<p>catalog works!</p>
+<div class="container">
+  <div class="crumbs">
+    <a class="all">All</a>
+    <span>/</span> <a>საჩუქრები</a>
+    <span>/</span> <a>ყვავილი</a>
+    <span>/</span> <a>ვარდები</a>
+    <span>/</span> <a class="active">შერეული</a>
+
+    <div class="search">
+      <input [(ngModel)]="q" placeholder="ძებნა" />
+    </div>
+  </div>
+
+  <div class="layout">
+    <app-filter-bar [(selected)]="price"></app-filter-bar>
+
+    <section class="grid">
+      <ng-container *ngIf="products$ | async as products; else loading">
+        <app-product-card
+          *ngFor="let p of products"
+          [product]="p"
+          *ngIf="matches(p)">
+        </app-product-card>
+      </ng-container>
+
+      <ng-template #loading>
+        <div class="loading">Loading...</div>
+      </ng-template>
+    </section>
+  </div>
+</div>

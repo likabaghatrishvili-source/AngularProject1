@@ -1,1 +1,29 @@
-<p>login works!</p>
+<div class="container auth">
+  <div class="box">
+    <h2>Login</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>Email</label>
+      <input appAutofocus type="email" formControlName="email" placeholder="example@mail.com" />
+      <div class="err" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+        შეიყვანე სწორი email
+      </div>
+
+      <label>Password</label>
+      <input type="password" formControlName="password" placeholder="******" />
+      <div class="err" *ngIf="form.controls.password.touched && form.controls.password.invalid">
+        მინიმუმ 6 სიმბოლო
+      </div>
+
+      <div class="apierr" *ngIf="error">{{ error }}</div>
+
+      <button class="btn" type="submit" [disabled]="loading">
+        {{ loading ? 'Loading...' : 'Login' }}
+      </button>
+    </form>
+
+    <div class="hint">
+      არ გაქვს ანგარიში? <a routerLink="/signup">Signup</a>
+    </div>
+  </div>
+</div>

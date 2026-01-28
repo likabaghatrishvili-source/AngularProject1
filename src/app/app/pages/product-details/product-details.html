@@ -1,1 +1,19 @@
-<p>product-details works!</p>
+<div class="container" *ngIf="product$ | async as p">
+  <div class="back">
+    <a routerLink="/catalog">← უკან დაბრუნება</a>
+  </div>
+
+  <div class="wrap">
+    <div class="img">
+      <img [src]="p.image" [alt]="p.title" (error)="($event.target as HTMLImageElement).src='assets/placeholder.jpg'">
+    </div>
+
+    <div class="info">
+      <div class="title">{{ p.title }}</div>
+      <div class="price">{{ p.price | gelPrice }}</div>
+      <div class="desc">{{ p.description }}</div>
+
+      <button class="btn" (click)="add(p)">კალათაში დამატება</button>
+    </div>
+  </div>
+</div>

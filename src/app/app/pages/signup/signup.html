@@ -1,1 +1,26 @@
-<p>signup works!</p>
+<div class="container auth">
+  <div class="box">
+    <h2>Signup</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>Name</label>
+      <input type="text" formControlName="name" placeholder="Your name" />
+
+      <label>Email</label>
+      <input type="email" formControlName="email" placeholder="example@mail.com" />
+
+      <label>Password</label>
+      <input type="password" formControlName="password" placeholder="******" />
+
+      <div class="apierr" *ngIf="error">{{ error }}</div>
+
+      <button class="btn" type="submit" [disabled]="loading">
+        {{ loading ? 'Loading...' : 'Create account' }}
+      </button>
+    </form>
+
+    <div class="hint">
+      გაქვს ანგარიში? <a routerLink="/login">Login</a>
+    </div>
+  </div>
+</div>

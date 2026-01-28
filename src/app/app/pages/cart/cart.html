@@ -1,1 +1,33 @@
-<p>cart works!</p>
+<div class="container">
+  <h2 class="h">კალათა</h2>
+
+  <ng-container *ngIf="items$ | async as items">
+    <div *ngIf="items.length === 0" class="empty">
+      კალათა ცარიელია. <a routerLink="/catalog">კატალოგზე გადასვლა</a>
+    </div>
+
+    <div *ngIf="items.length > 0" class="list">
+      <div class="row" *ngFor="let it of items">
+        <img class="thumb" [src]="it.product.image" (error)="($event.target as HTMLImageElement).src='assets/placeholder.jpg'">
+        <div class="meta">
+          <div class="name">{{ it.product.title }}</div>
+          <div class="price">{{ it.product.price | gelPrice }}</div>
+        </div>
+
+        <div class="qty">
+          <button (click)="dec(it.product.id, it.qty)">-</button>
+          <span>{{ it.qty }}</span>
+          <button (click)="inc(it.product.id, it.qty)">+</button>
+        </div>
+
+        <div class="sum">{{ (it.qty * it.product.price) | gelPrice }}</div>
+
+        <button class="rm" (click)="remove(it.product.id)">×</button>
+      </div>
+
+      <div class="total">
+        სულ: <b>{{ (total$ | async) ?? 0 | gelPrice }}</b>
+      </div>
+    </div>
+  </ng-container>
+</div>
