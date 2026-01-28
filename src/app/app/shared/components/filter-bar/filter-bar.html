@@ -1,1 +1,10 @@
-<p>filter-bar works!</p>
+<aside class="filters">
+  <div class="ftitle">ფასი.</div>
+
+  <button class="fitem" [class.active]="selected==='all'" (click)="set('all')">All</button>
+  <button class="fitem" [class.active]="selected==='0-100'" (click)="set('0-100')">₾0 - ₾100</button>
+  <button class="fitem" [class.active]="selected==='100-200'" (click)="set('100-200')">₾100 - ₾200</button>
+  <button class="fitem" [class.active]="selected==='200-300'" (click)="set('200-300')">₾200 - ₾300</button>
+  <button class="fitem" [class.active]="selected==='300-400'" (click)="set('300-400')">₾300 - ₾400</button>
+  <button class="fitem" [class.active]="selected==='400+'" (click)="set('400+')">₾400+</button>
+</aside>

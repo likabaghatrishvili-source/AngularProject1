@@ -1,1 +1,39 @@
-<p>header works!</p>
+<div class="topline">
+  <div class="container topline-inner">
+    <div class="phone">+995 592 064 064</div>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" routerLink="/">
+      <!-- ჩასვი შენი ლოგო: src/assets/logo.svg -->
+      <span class="brand-text">ამელიე</span>
+    </a>
+
+    <nav class="nav">
+      <a routerLink="/catalog" routerLinkActive="active">ყვავილების კატალოგი</a>
+      <a routerLink="/catalog" routerLinkActive="active">შეკვეთის პირობები</a>
+      <a routerLink="/catalog" routerLinkActive="active">კონტაქტი</a>
+    </nav>
+
+    <div class="right">
+      <select class="lang" [(ngModel)]="lang" disabled>
+        <option>Georgian</option>
+      </select>
+
+      <a class="cart" routerLink="/cart">
+        კალათა <span class="badge">{{ (count$ | async) ?? 0 }}</span>
+      </a>
+
+      <ng-container *ngIf="(user$ | async) as u; else guest">
+        <a class="authlink" routerLink="/admin" *ngIf="u.role==='admin'">Admin</a>
+        <button class="logout" (click)="logout()">Logout</button>
+      </ng-container>
+
+      <ng-template #guest>
+        <a class="authlink" routerLink="/login">Login</a>
+      </ng-template>
+    </div>
+  </div>
+</header>

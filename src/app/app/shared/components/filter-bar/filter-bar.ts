@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+export type PriceRange = 'all' | '0-100' | '100-200' | '200-300' | '300-400' | '400+';
 
 @Component({
   selector: 'app-filter-bar',
-  imports: [],
+  standalone: true,
   templateUrl: './filter-bar.html',
-  styleUrl: './filter-bar.css',
+  styleUrls: ['./filter-bar.css'],
 })
-export class FilterBar {
+export class FilterBarComponent {
+  @Input() selected: PriceRange = 'all';
+  @Output() selectedChange = new EventEmitter<PriceRange>();
 
+  set(r: PriceRange) { this.selectedChange.emit(r); }
 }

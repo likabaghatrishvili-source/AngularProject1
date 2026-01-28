@@ -1,0 +1,15 @@
+.filters{ padding-top:12px; }
+.ftitle{ font-weight:700; margin-bottom:10px; }
+.fitem{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:8px 0;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  color:#444;
+  font-size:14px;
+}
+.fitem:hover{ color:var(--accent); }
+.fitem.active{ color:var(--accent); font-weight:700; }

@@ -1,1 +1,12 @@
-<p>product-card works!</p>
+<a class="card" appHoverGlow [routerLink]="['/product', product.id]">
+  <div class="imgwrap">
+    <img [src]="product.image" [alt]="product.title" loading="lazy"
+         (error)="($event.target as HTMLImageElement).src='assets/placeholder.jpg'">
+  </div>
+
+  <div class="info">
+    <div class="name">{{ product.title }}</div>
+    <div class="desc">{{ product.description | truncate:60 }}</div>
+    <div class="price">{{ product.price | gelPrice }}</div>
+  </div>
+</a>

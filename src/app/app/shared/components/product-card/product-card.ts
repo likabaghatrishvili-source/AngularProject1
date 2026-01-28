@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
+
+import { Product } from '../../../../core/models/product.model';
+import { GelPricePipe } from '../../pipes/gel-price-pipe';
+import { TruncatePipe } from '../../pipes/truncate-pipe';
+import { HoverGlowDirective } from '../../directives/hover-glow';
 
 @Component({
   selector: 'app-product-card',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink, NgIf, GelPricePipe, TruncatePipe, HoverGlowDirective],
   templateUrl: './product-card.html',
-  styleUrl: './product-card.css',
+  styleUrls: ['./product-card.css'],
 })
-export class ProductCard {
-
+export class ProductCardComponent {
+  @Input({ required: true }) product!: Product;
 }
