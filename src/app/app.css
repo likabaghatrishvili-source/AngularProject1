@@ -1,0 +1,24 @@
+:root{
+  --text:#111;
+  --muted:#777;
+  --border:#e9e9e9;
+  --bg:#fff;
+  --soft:#f7f7f7;
+  --accent:#d86a82; /* amelie-ish pink */
+  --max:1180px;
+  --radius:6px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
+
+a{ color:inherit; text-decoration:none; }
+.container{ max-width:var(--max); margin:0 auto; padding:0 16px; }
+
+.page{ min-height: calc(100vh - 120px); } /* header+footer approx */
